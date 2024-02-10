@@ -32,7 +32,7 @@ const InventoryManagementContainer = () => {
       </div>
       <h1 className='header'>Inventory Stats</h1>
       <TotalBoxRenderer totalCounts={totalCounts} />
-      <InventoryManagementComponent isAdminViewEnabled={checked} setTotalCounts={setTotalCounts} />
+      <InventoryManagementComponent isAdminViewEnabled={!checked} setTotalCounts={setTotalCounts} />
     </div>
   );
 };

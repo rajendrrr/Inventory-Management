@@ -31,7 +31,7 @@ export const handleOpenPopUp = ({ row, setModalVisible, setRowDataToEdit }) => {
 
 export const handleToggleDisability = ({ row, tableData, setTableData }) => {
   const updatedTableData = _.map(tableData, (item) => {
-    if (row.name === item.name) return { ...item, disabled: true };
+    if (row.name === item.name) return { ...item, disabled: !item.disabled };
     return item;
   });
   setTableData(updatedTableData);

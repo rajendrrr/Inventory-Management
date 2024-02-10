@@ -3,7 +3,11 @@ import _ from "lodash";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-import { handleDeleteRow, handleOpenPopUp, handleToggleDisability } from './InventoryManagement.helpers';
+import {
+  handleDeleteRow,
+  handleOpenPopUp,
+  handleToggleDisability,
+} from "./InventoryManagement.helpers";
 
 export const getColumns = ({
   tableData,
@@ -20,24 +24,24 @@ export const getColumns = ({
   },
   {
     name: "Category",
-    selector: ({ category  }) => category,
+    selector: ({ category }) => category,
   },
   {
     name: "Price",
-    selector: ({ price  }) => price,
+    selector: ({ price }) => price,
   },
   {
     name: "Quantity",
-    selector: ({  quantity }) => quantity,
+    selector: ({ quantity }) => quantity,
   },
   {
     name: "Value",
-    selector: ({ value  }) => value,
+    selector: ({ value }) => value,
   },
   {
     name: "ACTION",
     cell: (row) => {
-      const disabled = isAdminViewEnabled || row.disabled;
+      const disabled = !isAdminViewEnabled || row.disabled;
       const iconStyles = `icon-styles ${
         disabled ? "icon-disabled-styles" : ""
       }`;
@@ -52,25 +56,29 @@ export const getColumns = ({
                 ? handleOpenPopUp({ row, setModalVisible, setRowDataToEdit })
                 : _.noop()
             }
-            className={`${iconStyles} edit-font-styles`}
+            className={`icon-styles ${
+              disabled ? "icon-disabled-styles" : ""
+            } edit-font-styles`}
           />
           <FontAwesomeIcon
             icon={faEye}
             size="lg"
-            disabled={disabled}
+            disabled={!isAdminViewEnabled}
             onClick={() =>
-              !disabled
+              isAdminViewEnabled
                 ? handleToggleDisability({ row, tableData, setTableData })
                 : _.noop()
             }
-            className={`${iconStyles} view-font-styles`}
+            className={`icon-styles ${
+              !isAdminViewEnabled ? "icon-disabled-styles" : ""
+            } view-font-styles`}
           />
           <FontAwesomeIcon
             icon={faTrash}
             size="lg"
-            disabled={disabled}
+            disabled={!isAdminViewEnabled}
             onClick={() =>
-              !disabled
+              isAdminViewEnabled
                 ? handleDeleteRow({
                     row,
                     tableData,
@@ -80,7 +88,9 @@ export const getColumns = ({
                   })
                 : _.noop()
             }
-            className={`${iconStyles} delete-font-styles`}
+            className={`icon-styles ${
+              !isAdminViewEnabled ? "icon-disabled-styles" : ""
+            } delete-font-styles`}
           />
         </div>
       );
