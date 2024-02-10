@@ -1,0 +1,89 @@
+.header {
+  margin-left: 16px;
+}
+
+.action {
+  display: flex;
+  flex-direction: row;
+}
+
+.totalBox {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  background-color: #161515;
+  color:white;
+  height:100vh
+}
+
+.top-right {
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.box {
+  width: 24%; /* Adjust as needed */
+  border: 1px solid #000;
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #273b1d;
+  color:white
+}
+
+.edit-font-styles {
+  color: green;
+}
+
+.view-font-styles {
+  color: lightblue;
+}
+
+.delete-font-styles {
+  color: red;
+}
+
+.box-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-with-label {
+  display: flex;
+  flex-direction: row;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-styles {
+  cursor: pointer;
+}
+
+.icon-disabled-styles {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  font-size: 24px;
+}
+
+.top-right-action-separator {
+  margin-left: 12px;
+  margin-right: 12px;
+}
